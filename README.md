@@ -1,0 +1,1 @@
+# faq_adquirenciaV2
