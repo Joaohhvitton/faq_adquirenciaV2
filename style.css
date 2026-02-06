@@ -28,7 +28,7 @@ body {
   opacity: 0;
 }
 
-/* Animação do gradiente */
+/* Animação do gradiente ( linha superior) */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;
@@ -41,7 +41,7 @@ body {
   }
 }
 
-/* Entrada suave */
+/* Entrada suave (animação entrada ) */
 @keyframes fadeSlide {
   from {
     opacity: 0;
@@ -232,3 +232,4 @@ h1 {
     background-position: 200%;
   }
 }
+
