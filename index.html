@@ -9,6 +9,16 @@
 </head>
 <body>
 
+  <div class="welcome-overlay" id="welcomeOverlay" aria-hidden="true"></div>
+
+  <div class="welcome-popup" id="welcomePopup" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
+    <div class="welcome-popup__content">
+      <h2 id="welcomeTitle">Boas vindas ao FAQ Redeflex</h2>
+      <p>Encontre respostas rápidas para dúvidas, erros e suporte.</p>
+      <button class="welcome-popup__close" id="closeWelcomePopup" aria-label="Fechar mensagem de boas vindas">Continuar</button>
+    </div>
+  </div>
+
   <!-- FAIXA SUPERIOR -->
   <header class="top-banner">
     <img src="Logo_png-removebg-preview.png" alt="Redeflex" class="logo-left">
@@ -88,11 +98,29 @@
           >
           Abrir chamado
         </a>
-    
+
       </div>
     </section>
 
   </main>
+
+  <script>
+    const popup = document.getElementById('welcomePopup');
+    const overlay = document.getElementById('welcomeOverlay');
+    const closeButton = document.getElementById('closeWelcomePopup');
+
+    const hidePopup = () => {
+      popup.classList.add('welcome-popup--hidden');
+      overlay.classList.add('welcome-overlay--hidden');
+      popup.setAttribute('aria-hidden', 'true');
+      overlay.setAttribute('aria-hidden', 'true');
+    };
+
+    closeButton.addEventListener('click', hidePopup);
+    overlay.addEventListener('click', hidePopup);
+
+    window.setTimeout(hidePopup, 6000);
+  </script>
 
 </body>
 </html>
