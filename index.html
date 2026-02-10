@@ -30,6 +30,31 @@
     <h1>FAQ | OPCOM</h1>
     <p>Selecione uma das opções abaixo para acessar o conteúdo</p>
 
+    <section class="search-box" aria-label="Pesquisa por tópicos">
+      <form id="topicSearchForm" class="search-box__form">
+        <input
+          type="search"
+          id="topicSearchInput"
+          class="search-box__input"
+          list="topicSuggestions"
+          placeholder="Pesquise por tópico (ex: Reativação, Erros PIX...)"
+          aria-label="Pesquisar tópico"
+        />
+        <button type="submit" class="search-box__button">Buscar</button>
+      </form>
+      <small id="topicSearchFeedback" class="search-box__feedback" aria-live="polite"></small>
+      <datalist id="topicSuggestions">
+        <option value="Credenciamento"></option>
+        <option value="Reativação"></option>
+        <option value="Terminais"></option>
+        <option value="Comandos POS"></option>
+        <option value="Erros gerais"></option>
+        <option value="Erros PIX"></option>
+        <option value="Erros Transacionais"></option>
+        <option value="Suporte Portal/App"></option>
+      </datalist>
+    </section>
+
     <section class="cards">
 
       <!-- Card Dúvidas -->
@@ -104,7 +129,7 @@
 
   </main>
 
-  <script>
+    <script>
     const popup = document.getElementById('welcomePopup');
     const overlay = document.getElementById('welcomeOverlay');
     const closeButton = document.getElementById('closeWelcomePopup');
@@ -120,9 +145,51 @@
     overlay.addEventListener('click', hidePopup);
 
     window.setTimeout(hidePopup, 6000);
+
+    const topicSearchForm = document.getElementById('topicSearchForm');
+    const topicSearchInput = document.getElementById('topicSearchInput');
+    const topicSearchFeedback = document.getElementById('topicSearchFeedback');
+
+    const topicLinks = {
+      'credenciamento': 'https://drive.google.com/file/d/1FnTXlzBSLM5AsXTFOuEa-SReBwLMABHI',
+      'reativacao': 'https://drive.google.com/file/d/1FnTXlzBSLM5AsXTFOuEa-SReBwLMABHI',
+      'terminais': 'https://drive.google.com/file/d/1FnTXlzBSLM5AsXTFOuEa-SReBwLMABHI',
+      'comandos pos': 'https://drive.google.com/file/d/1FnTXlzBSLM5AsXTFOuEa-SReBwLMABHI',
+      'erros gerais': 'https://drive.google.com/file/d/1nsJyPT6Lpeejj_JiywPoolKk2KxLcclg',
+      'erros pix': 'https://drive.google.com/file/d/1nsJyPT6Lpeejj_JiywPoolKk2KxLcclg',
+      'erros transacionais': 'https://drive.google.com/file/d/1nsJyPT6Lpeejj_JiywPoolKk2KxLcclg',
+      'suporte portal/app': 'https://drive.google.com/file/d/1nsJyPT6Lpeejj_JiywPoolKk2KxLcclg'
+    };
+
+    const normalizeText = (value) => value
+      .trim()
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+
+    topicSearchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const query = normalizeText(topicSearchInput.value);
+
+      if (!query) {
+        topicSearchFeedback.textContent = 'Digite um tópico para pesquisar.';
+        return;
+      }
+
+      const directMatch = topicLinks[query];
+      const closeMatchKey = Object.keys(topicLinks).find((topic) => topic.includes(query));
+      const destination = directMatch || (closeMatchKey ? topicLinks[closeMatchKey] : null);
+
+      if (destination) {
+        topicSearchFeedback.textContent = 'Tópico encontrado. Abrindo o documento...';
+        window.open(destination, '_blank', 'noopener');
+        return;
+      }
+
+      topicSearchFeedback.textContent = 'Não encontramos esse tópico. Tente outro termo ou use os cards abaixo.';
+    });
   </script>
 
 </body>
 </html>
-
-
