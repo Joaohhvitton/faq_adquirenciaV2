@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FAQ | OPCOM</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32-removebg-preview.png">
 </head>
 <body>
@@ -19,7 +19,6 @@
     </div>
   </div>
 
-  <!-- FAIXA SUPERIOR -->
   <header class="top-banner">
     <img src="Logo_png-removebg-preview.png" alt="Redeflex" class="logo-left">
     <img src="Logo_OPCOM-removebg-preview.png" alt="OPCOM" class="logo-right">
@@ -27,37 +26,45 @@
   </header>
 
   <main class="container">
-    <h1>FAQ | OPCOM</h1>
-    <p>Selecione uma das opções abaixo para acessar o conteúdo</p>
+    <section class="help-panel" aria-label="Central de ajuda">
+      <h1>FAQ | OPCOM</h1>
+      <p>Selecione uma das opções abaixo para acessar o conteúdo</p>
 
-    <section class="search-box" aria-label="Pesquisa por tópicos">
-      <form id="topicSearchForm" class="search-box__form">
-        <input
-          type="search"
-          id="topicSearchInput"
-          class="search-box__input"
-          list="topicSuggestions"
-          placeholder="Pesquise por tópico (ex: Reativação, Erros PIX...)"
-          aria-label="Pesquisar tópico"
-        />
-        <button type="submit" class="search-box__button">Buscar</button>
-      </form>
-      <small id="topicSearchFeedback" class="search-box__feedback" aria-live="polite"></small>
-      <datalist id="topicSuggestions">
-        <option value="Credenciamento"></option>
-        <option value="Reativação"></option>
-        <option value="Terminais"></option>
-        <option value="Comandos POS"></option>
-        <option value="Erros gerais"></option>
-        <option value="Erros PIX"></option>
-        <option value="Erros Transacionais"></option>
-        <option value="Suporte Portal/App"></option>
-      </datalist>
+      <section class="search-box" aria-label="Pesquisa por tópicos">
+        <form id="topicSearchForm" class="search-box__form">
+          <input
+            type="search"
+            id="topicSearchInput"
+            class="search-box__input"
+            list="topicSuggestions"
+            placeholder="Pesquise por tópico (ex: Reativação, Erros PIX...)"
+            aria-label="Pesquisar tópico"
+          />
+          <button type="submit" class="search-box__button">Buscar</button>
+        </form>
+        <small id="topicSearchFeedback" class="search-box__feedback" aria-live="polite"></small>
+        <datalist id="topicSuggestions">
+          <option value="Credenciamento"></option>
+          <option value="Reativação"></option>
+          <option value="Terminais"></option>
+          <option value="Comandos POS"></option>
+          <option value="Erros gerais"></option>
+          <option value="Erros PIX"></option>
+          <option value="Erros Transacionais"></option>
+          <option value="Suporte Portal/App"></option>
+          <option value="Instalação do pacote Pen drive"></option>
+        </datalist>
+      </section>
+
+      <div class="help-panel__tags" aria-label="Mais buscados">
+        <strong>Mais buscados:</strong>
+        <button type="button" class="help-panel__tag" data-topic="Erros gerais">Principais problemas das maquininhas</button>
+        <button type="button" class="help-panel__tag" data-topic="Credenciamento">Credenciamento</button>
+        <button type="button" class="help-panel__tag" data-topic="Erros Transacionais">Falhas na transação</button>
+      </div>
     </section>
 
     <section class="cards">
-
-      <!-- Card Dúvidas -->
       <a
         href="https://drive.google.com/file/d/16tiqZ3iAN8WxIimdH_krgtWOLiWSXOAK"
         class="card"
@@ -79,7 +86,6 @@
         </div>
       </a>
 
-      <!-- Card Erros -->
       <a
         href="https://drive.google.com/file/d/1eek0hb_b5TSTw1txpCIv47rGqjIQC7k_"
         class="card"
@@ -100,13 +106,55 @@
           </ul>
         </div>
       </a>
-
     </section>
 
-    <!-- SUPORTE -->
+    <section class="videos-section" aria-label="Manuais em vídeo">
+      <div class="videos-section__header">
+        <h2>Manuais</h2>
+      </div>
+
+      <div class="videos-grid">
+        <article class="video-card">
+          <div class="video-card__player" id="installVideoCard">
+            <button
+              class="video-card__thumb"
+              id="playInstallVideo"
+              type="button"
+              aria-label="Reproduzir vídeo Instalação do pacote Pen drive"
+            >
+              <span class="video-card__play">▶</span>
+            </button>
+          </div>
+
+          <div class="video-card__body">
+            <h3>Instalação do pacote Pen drive - MOVE5000</h3>
+            <p>Assista ao vídeo diretamente no card</p>
+          </div>
+        </article>
+
+        <article class="video-card">
+          <div class="video-card__player" id="shortsVideoCard">
+            <button
+              class="video-card__thumb video-card__thumb--second"
+              id="playShortsVideo"
+              type="button"
+              aria-label="Reproduzir vídeo Manual adicional"
+            >
+              <span class="video-card__play">▶</span>
+            </button>
+          </div>
+
+          <div class="video-card__body">
+            <h3>Credenciamento Terminal - MOVE5000</h3>
+            <p>Assista ao vídeo diretamente no card</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section class="suporte-cta">
-      <h2>Não encontrou o que precisa❓</h2>
-      <p>Nosso time está disponível para ajudar você agora mesmo.</p>
+      <h2><span class="suporte-cta__icon" aria-hidden="true">🎧</span> Ainda não encontrou sua resposta?</h2>
+      <p>Fale com o suporte agora ou abra um chamado para acompanhamento.</p>
 
       <div class="suporte-acoes">
         <a
@@ -117,86 +165,87 @@
           Falar com o suporte
         </a>
 
-        <a href="https://intraflex.redeflex.com.br/Chamados/NovoChamado" class="btn-chamado"
-          target= "_blank"
-          class="btn-suporte"
-          >
+        <a
+          href="https://intraflex.redeflex.com.br/Chamados/NovoChamado"
+          class="btn-chamado"
+          target="_blank"
+        >
           Abrir chamado
         </a>
-
       </div>
     </section>
 
   </main>
 
-    <script>
-    const popup = document.getElementById('welcomePopup');
-    const overlay = document.getElementById('welcomeOverlay');
-    const closeButton = document.getElementById('closeWelcomePopup');
+  <footer
+    class="redeflex-footer"
+    aria-label="Informações institucionais Redeflex"
+  >
+      <div class="redeflex-footer__grid">
+        <div>
+          <h3 class="redeflex-footer__brand">Redeflex</h3>
+          <ul>
+            <li><a href="https://www.redeflex.com.br" target="_blank" rel="noopener noreferrer">Site institucional</a></li>
+            <li><a href="https://www.redeflex.com.br/contato" target="_blank" rel="noopener noreferrer">Fale conosco</a></li>
+            <li><a href="https://www.redeflex.com.br" target="_blank" rel="noopener noreferrer">Seja parceiro</a></li>
+          </ul>
+        </div>
 
-    const hidePopup = () => {
-      popup.classList.add('welcome-popup--hidden');
-      overlay.classList.add('welcome-overlay--hidden');
-      popup.setAttribute('aria-hidden', 'true');
-      overlay.setAttribute('aria-hidden', 'true');
-    };
+        <div>
+          <h4>Produtos e serviços</h4>
+          <ul>
+            <li>Adquirência</li>
+            <li>Recarga e serviços</li>
+            <li>Soluções para varejo</li>
+            <li>Suporte técnico</li>
+          </ul>
+        </div>
 
-    closeButton.addEventListener('click', hidePopup);
-    overlay.addEventListener('click', hidePopup);
+        <div>
+          <h4>Atendimento</h4>
+          <ul>
+            <li><a href="https://wa.me/5508006470002?text=Ol%C3%A1%20preciso%20de%20uma%20ajuda" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="https://intraflex.redeflex.com.br/Chamados/NovoChamado" target="_blank" rel="noopener noreferrer">Abrir chamado</a></li>
+            <li><a href="mailto:opcom@redeflex.com.br">opcom@redeflex.com.br</a></li>
+          </ul>
+        </div>
 
-    window.setTimeout(hidePopup, 6000);
+        <div>
+          <h4>Institucional</h4>
+          <ul>
+            <li>Política de privacidade</li>
+            <li>Termos de uso</li>
+            <li>Segurança da informação</li>
+            <li>Ouvidoria</li>
+          </ul>
+        </div>
+      </div>
 
-    const topicSearchForm = document.getElementById('topicSearchForm');
-    const topicSearchInput = document.getElementById('topicSearchInput');
-    const topicSearchFeedback = document.getElementById('topicSearchFeedback');
+      <p class="redeflex-footer__note">
+        © Redeflex. Este portal foi desenvolvido para orientar o atendimento com informações rápidas e oficiais.
+      </p>
+  </footer>
 
-    const topicLinks = {
-      'credenciamento': 'https://drive.google.com/file/d/1FnTXlzBSLM5AsXTFOuEa-SReBwLMABHI',
-      'reativacao': 'https://drive.google.com/file/d/1FnTXlzBSLM5AsXTFOuEa-SReBwLMABHI',
-      'terminais': 'https://drive.google.com/file/d/1FnTXlzBSLM5AsXTFOuEa-SReBwLMABHI',
-      'comandos pos': 'https://drive.google.com/file/d/1FnTXlzBSLM5AsXTFOuEa-SReBwLMABHI',
-      'erros gerais': 'https://drive.google.com/file/d/1nsJyPT6Lpeejj_JiywPoolKk2KxLcclg',
-      'erros pix': 'https://drive.google.com/file/d/1nsJyPT6Lpeejj_JiywPoolKk2KxLcclg',
-      'erros transacionais': 'https://drive.google.com/file/d/1nsJyPT6Lpeejj_JiywPoolKk2KxLcclg',
-      'suporte portal/app': 'https://drive.google.com/file/d/1nsJyPT6Lpeejj_JiywPoolKk2KxLcclg'
-    };
+  <button class="faq-chat-toggle" id="faqChatToggle" aria-label="Abrir assistente FAQ">
+    💬
+  </button>
 
-    const normalizeText = (value) => value
-      .trim()
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
+  <aside class="faq-chat-drawer" id="faqChatDrawer" aria-hidden="true" aria-label="Assistente FAQ">
+    <div class="faq-chat__header">
+      <h2>Assistente FAQ</h2>
+      <button type="button" id="faqChatClose" class="faq-chat__close" aria-label="Fechar assistente">✕</button>
+    </div>
 
-    topicSearchForm.addEventListener('submit', (event) => {
-      event.preventDefault();
+    <div class="faq-chat__messages" id="faqChatMessages"></div>
 
-      const query = normalizeText(topicSearchInput.value);
+    <div class="faq-chat__suggestions" id="faqChatSuggestions"></div>
 
-      if (!query) {
-        topicSearchFeedback.textContent = 'Digite um tópico para pesquisar.';
-        return;
-      }
-
-      const directMatch = topicLinks[query];
-      const closeMatchKey = Object.keys(topicLinks).find((topic) => topic.includes(query));
-      const destination = directMatch || (closeMatchKey ? topicLinks[closeMatchKey] : null);
-
-      if (destination) {
-        topicSearchFeedback.textContent = 'Tópico encontrado. Abrindo o documento...';
-        window.open(destination, '_blank', 'noopener');
-        return;
-      }
-
-      topicSearchFeedback.textContent = 'Não encontramos esse tópico. Tente outro termo ou use os cards abaixo.';
-    });
-  </script>
+    <form class="faq-chat__form" id="faqChatForm">
+      <input type="text" id="faqChatInput" placeholder="Digite sua dúvida..." aria-label="Digite sua dúvida" />
+      <button type="submit">Enviar</button>
+    </form>
+  </aside>
+  <script src="./script.js" defer></script>
 
 </body>
 </html>
-
-
-
-
-
-
-
