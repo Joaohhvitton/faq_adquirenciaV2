@@ -1,251 +1,513 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FAQ | OPCOM</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32-removebg-preview.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Central de Ajuda · OPCOM | Redeflex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <div class="welcome-overlay" id="welcomeOverlay" aria-hidden="true"></div>
+<!-- ===================== HEADER ===================== -->
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="#top" aria-label="Redeflex OPCOM — início">
+      <!-- Troque por: <img src="Logo_png-removebg-preview.png" alt="Redeflex" style="height:34px"> -->
+      <span class="brand__mark">REDEFL<span>EX</span></span>
+      <span class="brand__opcom">OPCOM</span>
+    </a>
 
-  <div class="welcome-popup" id="welcomePopup" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle">
-    <div class="welcome-popup__content">
-      <h2 id="welcomeTitle">Boas vindas ao FAQ Redeflex</h2>
-      <p>Encontre respostas rápidas para dúvidas, erros e suporte.</p>
-      <button class="welcome-popup__close" id="closeWelcomePopup" aria-label="Fechar mensagem de boas vindas">Continuar</button>
+    <nav class="topnav" id="topnav" aria-label="Atalhos da central">
+      <a href="#categorias" data-cat="dx8000" class="topnav__link topnav__link--feat">DX8000</a>
+      <a href="#categorias" data-cat="erros" class="topnav__link">Erros POS</a>
+      <a href="#mensageria" class="topnav__link">Mensageria</a>
+      <a href="#categorias" data-cat="adquirencia" class="topnav__link">Adquirência</a>
+      <a href="#categorias" data-cat="portal" class="topnav__link">Portal & App</a>
+      <a href="#categorias" data-cat="equipamentos" class="topnav__link">Equipamentos</a>
+      <a href="#documentos" class="topnav__link">Documentos</a>
+    </nav>
+
+    <div class="topnav__right">
+      <button class="topnav__search-btn" id="navSearchBtn" aria-label="Buscar" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a class="header__support" href="https://wa.me/5508006470002?text=Ol%C3%A1%20preciso%20de%20uma%20ajuda" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5a8.38 8.38 0 0 0 .9 3.8 8.5 8.5 0 0 0 7.6 4.7 8.38 8.38 0 0 0 3.8-.9L21 21l-1.9-5.7a8.38 8.38 0 0 0 .9-3.8 8.5 8.5 0 0 0-4.7-7.6 8.38 8.38 0 0 0-3.8-.9h-.5a8.48 8.48 0 0 0-8 8v.5z"/></svg>
+        <span>Suporte</span>
+      </a>
+      <button class="topnav__burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 
-  <header class="top-banner">
-    <img src="Logo_png-removebg-preview.png" alt="Redeflex" class="logo-left">
-    <img src="Logo_OPCOM-removebg-preview.png" alt="OPCOM" class="logo-right">
-    <div class="banner-line"></div>
-  </header>
+  <!-- busca expansível da nav (espelha a busca do hero) -->
+  <div class="navsearch" id="navSearch" hidden>
+    <div class="wrap navsearch__inner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="navSearchInput" type="search" placeholder="Buscar em toda a central… (ex.: código 51, NO SERVICE, MDR)" aria-label="Buscar na central" autocomplete="off">
+      <button id="navSearchClose" aria-label="Fechar busca">✕</button>
+    </div>
+  </div>
+</header>
 
-  <main class="container">
-    <section class="help-panel" aria-label="Central de ajuda">
-      <h1>FAQ | OPCOM</h1>
-      <p>Selecione uma das opções abaixo para acessar o conteúdo</p>
+<!-- ===================== HERO + BUSCA ===================== -->
+<section class="hero" id="top">
+  <div class="wrap hero__inner">
+    <p class="hero__eyebrow">Central de Ajuda · OPCOM</p>
+    <h1>Como podemos <em>ajudar</em> você hoje?</h1>
+    <p class="hero__sub">Pesquise por um tópico ou escolha uma categoria. As respostas filtram em tempo real conforme você digita.</p>
 
-      <section class="search-box" aria-label="Pesquisa por tópicos">
-        <form id="topicSearchForm" class="search-box__form">
-          <input
-            type="search"
-            id="topicSearchInput"
-            class="search-box__input"
-            list="topicSuggestions"
-            placeholder="Pesquise por tópico (ex: Reativação, Erros PIX...)"
-            aria-label="Pesquisar tópico"
-          />
-          <button type="submit" class="search-box__button">Buscar</button>
-        </form>
-        <small id="topicSearchFeedback" class="search-box__feedback" aria-live="polite"></small>
-        <datalist id="topicSuggestions">
-          <option value="Credenciamento"></option>
-          <option value="Reativação"></option>
-          <option value="Terminais"></option>
-          <option value="Comandos POS"></option>
-          <option value="Erros gerais"></option>
-          <option value="Erros PIX"></option>
-          <option value="Erros Transacionais"></option>
-          <option value="Suporte Portal/App"></option>
-          <option value="Instalação do pacote Pen drive"></option>
-        </datalist>
-      </section>
-
-      <div class="help-panel__tags" aria-label="Mais buscados">
-        <strong>Mais buscados:</strong>
-        <button type="button" class="help-panel__tag" data-topic="Erros gerais">Principais problemas das maquininhas</button>
-        <button type="button" class="help-panel__tag" data-topic="Credenciamento">Credenciamento</button>
-        <button type="button" class="help-panel__tag" data-topic="Erros Transacionais">Falhas na transação</button>
+    <div class="search" role="search">
+      <div class="search__field">
+        <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="Ex.: erro PIX, credenciamento, reativação, pen drive…" aria-label="Pesquisar na central de ajuda" autocomplete="off">
+        <button class="search__btn" id="qBtn" type="button">Buscar</button>
       </div>
-    </section>
-
-    <section class="cards">
-      <a
-        href="https://drive.google.com/file/d/16tiqZ3iAN8WxIimdH_krgtWOLiWSXOAK"
-        class="card"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div class="icon">❓</div>
-        <h3>Dúvidas Gerais</h3>
-        <span>Processos, orientações e informações gerais</span>
-
-        <div class="topics">
-          <strong>Tópicos importantes</strong>
-          <ul>
-            <li>Credenciamento</li>
-            <li>Reativação</li>
-            <li>Terminais</li>
-            <li>Comandos POS</li>
-          </ul>
-        </div>
-      </a>
-
-      <a
-        href="https://drive.google.com/file/d/1eek0hb_b5TSTw1txpCIv47rGqjIQC7k_"
-        class="card"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <div class="icon">⚠️</div>
-        <h3>Erros POS</h3>
-        <span>Códigos de erro, negativas e tratativas</span>
-
-        <div class="topics">
-          <strong>Tópicos importantes</strong>
-          <ul>
-            <li>Erros gerais</li>
-            <li>Erros PIX</li>
-            <li>Erros Transacionais</li>
-            <li>Suporte Portal/App</li>
-          </ul>
-        </div>
-      </a>
-    </section>
-
-    <section class="videos-section" aria-label="Manuais em vídeo">
-      <div class="videos-section__header">
-        <h2>Manuais</h2>
-      </div>
-
-      <div class="videos-grid">
-        <article class="video-card">
-          <div class="video-card__player" id="installVideoCard">
-            <button
-              class="video-card__thumb"
-              id="playInstallVideo"
-              type="button"
-              aria-label="Reproduzir vídeo Instalação do pacote Pen drive"
-            >
-              <span class="video-card__play">▶</span>
-            </button>
-          </div>
-
-          <div class="video-card__body">
-            <h3>Instalação do pacote Pen drive - MOVE5000</h3>
-            <p>Assista ao vídeo diretamente no card</p>
-          </div>
-        </article>
-
-        <article class="video-card">
-          <div class="video-card__player" id="shortsVideoCard">
-            <button
-              class="video-card__thumb video-card__thumb--second"
-              id="playShortsVideo"
-              type="button"
-              aria-label="Reproduzir vídeo Manual adicional"
-            >
-              <span class="video-card__play">▶</span>
-            </button>
-          </div>
-
-          <div class="video-card__body">
-            <h3>Credenciamento Terminal - MOVE5000</h3>
-            <p>Assista ao vídeo diretamente no card</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="suporte-cta">
-      <h2><span class="suporte-cta__icon" aria-hidden="true">🎧</span> Ainda não encontrou sua resposta?</h2>
-      <p>Fale com o suporte agora ou abra um chamado para acompanhamento.</p>
-
-      <div class="suporte-acoes">
-        <a
-          href="https://wa.me/5508006470002?text=Ol%C3%A1%20preciso%20de%20uma%20ajuda"
-          target="_blank"
-          class="btn-suporte"
-        >
-          Falar com o suporte
-        </a>
-
-        <a
-          href="https://intraflex.redeflex.com.br/Chamados/NovoChamado"
-          class="btn-chamado"
-          target="_blank"
-        >
-          Abrir chamado
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <footer
-    class="redeflex-footer"
-    aria-label="Informações institucionais Redeflex"
-  >
-      <div class="redeflex-footer__grid">
-        <div>
-          <h3 class="redeflex-footer__brand">Redeflex</h3>
-          <ul>
-            <li><a href="https://www.redeflex.com.br" target="_blank" rel="noopener noreferrer">Site institucional</a></li>
-            <li><a href="https://www.redeflex.com.br/contato" target="_blank" rel="noopener noreferrer">Fale conosco</a></li>
-            <li><a href="https://www.redeflex.com.br" target="_blank" rel="noopener noreferrer">Seja parceiro</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Produtos e serviços</h4>
-          <ul>
-            <li>Adquirência</li>
-            <li>Recarga e serviços</li>
-            <li>Soluções para varejo</li>
-            <li>Suporte técnico</li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Atendimento</h4>
-          <ul>
-            <li><a href="https://wa.me/5508006470002?text=Ol%C3%A1%20preciso%20de%20uma%20ajuda" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
-            <li><a href="https://intraflex.redeflex.com.br/Chamados/NovoChamado" target="_blank" rel="noopener noreferrer">Abrir chamado</a></li>
-            <li><a href="mailto:opcom@redeflex.com.br">opcom@redeflex.com.br</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Institucional</h4>
-          <ul>
-            <li>Política de privacidade</li>
-            <li>Termos de uso</li>
-            <li>Segurança da informação</li>
-            <li>Ouvidoria</li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="redeflex-footer__note">
-        © Redeflex. Este portal foi desenvolvido para orientar o atendimento com informações rápidas e oficiais.
-      </p>
-  </footer>
-
-  <button class="faq-chat-toggle" id="faqChatToggle" aria-label="Abrir assistente FAQ">
-    💬
-  </button>
-
-  <aside class="faq-chat-drawer" id="faqChatDrawer" aria-hidden="true" aria-label="Assistente FAQ">
-    <div class="faq-chat__header">
-      <h2>Assistente FAQ</h2>
-      <button type="button" id="faqChatClose" class="faq-chat__close" aria-label="Fechar assistente">✕</button>
+      <p class="search__count" id="qCount" aria-live="polite"></p>
     </div>
 
-    <div class="faq-chat__messages" id="faqChatMessages"></div>
+    <div class="popular">
+      <span class="popular__label">Mais buscados:</span>
+      <button class="chip" data-q="máquina já alocada">Máquina já alocada</button>
+      <button class="chip" data-q="no service">NO SERVICE (chip)</button>
+      <button class="chip" data-q="pix">Erros PIX</button>
+      <button class="chip" data-q="mdr">MDR / taxas</button>
+      <button class="chip" data-q="portal senha">Acesso ao Portal</button>
+    </div>
+  </div>
+</section>
 
-    <div class="faq-chat__suggestions" id="faqChatSuggestions"></div>
+<main class="wrap">
 
-    <form class="faq-chat__form" id="faqChatForm">
-      <input type="text" id="faqChatInput" placeholder="Digite sua dúvida..." aria-label="Digite sua dúvida" />
-      <button type="submit">Enviar</button>
-    </form>
-  </aside>
-  <script src="./script.js" defer></script>
+  <!-- ===================== CATEGORIAS ===================== -->
+  <section class="section" id="categorias" aria-label="Categorias">
+    <div class="section__head">
+      <div>
+        <h2>Navegue por categoria</h2>
+        <p>Clique para filtrar as perguntas relacionadas.</p>
+      </div>
+    </div>
+    <div class="cats" id="cats">
+      <button class="cat cat--feat" data-cat="dx8000">
+        <span class="cat__badge">NOVO</span>
+        <span class="cat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h8M9 14h6"/><circle cx="12" cy="18" r="1"/></svg></span>
+        <h3>DX8000 · Credenciamento</h3>
+        <p>Novo fluxo via middleware (v1.56.11): proposta, Intraflex, SGV e disponibilidade do terminal.</p>
+        <span class="cat__flow-hint">Toque para ver o fluxo animado →</span>
+        <span class="cat__count" data-count="dx8000"></span>
+      </button>
+      <button class="cat" data-cat="erros">
+        <span class="cat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17"/></svg></span>
+        <h3>Erros POS</h3>
+        <p>Mensagens do terminal, PIX, leitura de cartão e tratativas.</p>
+        <span class="cat__count" data-count="erros"></span>
+      </button>
+      <button class="cat" data-cat="adquirencia">
+        <span class="cat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span>
+        <h3>Adquirência & Serviços</h3>
+        <p>MDR, modalidades, antecipação, recebimentos, vouchers e aluguel.</p>
+        <span class="cat__count" data-count="adquirencia"></span>
+      </button>
+      <button class="cat" data-cat="portal">
+        <span class="cat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></span>
+        <h3>Portal & App</h3>
+        <p>Acesso, senha, vendas, pagamentos, taxas e uso do AppFlex.</p>
+        <span class="cat__flow-hint">Toque para abrir o simulador do Portal →</span>
+        <span class="cat__count" data-count="portal"></span>
+      </button>
+      <button class="cat" data-cat="equipamentos">
+        <span class="cat__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 6h4M10 18h4"/></svg></span>
+        <h3>Equipamentos & Operação</h3>
+        <p>DX8000 e MOVE5000: vendas, reimpressão, estorno e configuração.</p>
+        <span class="cat__count" data-count="equipamentos"></span>
+      </button>
+    </div>
+  </section>
 
+  <!-- ===================== FAQ ===================== -->
+  <section class="section" id="perguntas" aria-label="Perguntas frequentes">
+    <div class="section__head">
+      <div>
+        <h2>Perguntas frequentes</h2>
+        <p id="faqSubtitle">Todas as categorias</p>
+      </div>
+    </div>
+
+    <div class="faq" id="faq"><!-- preenchido por JS --></div>
+
+    <div class="faq__empty" id="faqEmpty">
+      <p>Nenhum resultado para <b id="emptyTerm"></b>.</p>
+      <p style="margin-top:6px">Tente outro termo ou <a href="https://wa.me/5508006470002" target="_blank" rel="noopener noreferrer" style="color:var(--wine-700);font-weight:600">fale com o suporte</a>.</p>
+    </div>
+  </section>
+
+  <!-- ===================== MENSAGERIA TRANSACIONAL (tabela) ===================== -->
+  <section class="section" id="mensageria" aria-label="Mensageria transacional">
+    <div class="section__head">
+      <div>
+        <h2>Mensageria Transacional</h2>
+        <p>Códigos de retorno da FIS e a tratativa de cada um. Filtre por código ou palavra.</p>
+      </div>
+    </div>
+
+    <div class="mtable-tools">
+      <div class="mtable-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="msgFilter" type="search" placeholder="Filtrar código ou termo (ex.: 51, saldo, senha, conta)" aria-label="Filtrar mensageria" autocomplete="off">
+      </div>
+      <div class="mtable-legend">
+        <span class="mtag mtag--ok">Aprovada</span>
+        <span class="mtag mtag--card">Central do cartão</span>
+        <span class="mtag mtag--int">Tratativa interna</span>
+      </div>
+    </div>
+
+    <div class="mtable-wrap">
+      <table class="mtable" id="msgTable">
+        <thead>
+          <tr><th>Código</th><th>O que significa</th><th>Tratativa</th></tr>
+        </thead>
+        <tbody id="msgBody"><!-- preenchido por JS --></tbody>
+      </table>
+      <p class="mtable-empty" id="msgEmpty" hidden>Nenhum código encontrado para esse filtro.</p>
+    </div>
+  </section>
+
+  <!-- ===================== DOCUMENTOS OFICIAIS ===================== -->
+  <section class="section" id="documentos" aria-label="Documentos oficiais">
+    <div class="section__head">
+      <div>
+        <h2>Documentos oficiais</h2>
+        <p>O conteúdo está todo aqui no portal — estes arquivos são a fonte completa, para consulta.</p>
+      </div>
+    </div>
+    <div class="docs" id="docs"><!-- preenchido por JS --></div>
+  </section>
+
+  <!-- ===================== MANUAIS ===================== -->
+  <section class="section" id="manuais" aria-label="Manuais em vídeo">
+    <div class="section__head">
+      <div>
+        <h2>Manuais em vídeo</h2>
+        <p>Assista direto aqui, sem sair da página.</p>
+      </div>
+    </div>
+    <div class="vtabs" id="vtabs" role="tablist" aria-label="Filtrar vídeos por modelo">
+      <button class="vtab is-active" type="button" data-model="todos" role="tab" aria-selected="true">Todos</button>
+      <button class="vtab" type="button" data-model="MOVE5000" role="tab" aria-selected="false">MOVE5000</button>
+      <button class="vtab" type="button" data-model="DX8000" role="tab" aria-selected="false">DX8000</button>
+    </div>
+    <!-- ►► Para adicionar/editar os vídeos do DX8000 e do MOVE5000,
+         edite as listas VIDEOS_DX8000 / VIDEOS_MOVE5000 no arquivo script.js ◄◄ -->
+    <div id="videos"><!-- cards renderizados por script.js --></div>
+  </section>
+
+  <!-- ===================== CTA SUPORTE ===================== -->
+  <section class="cta" aria-label="Suporte">
+    <span class="cta__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>
+    <h2>Ainda não encontrou sua resposta?</h2>
+    <p>Fale com o suporte agora ou abra um chamado para acompanhamento.</p>
+    <div class="cta__actions">
+      <a class="btn btn--primary" href="https://wa.me/5508006470002?text=Ol%C3%A1%20preciso%20de%20uma%20ajuda" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5a8.38 8.38 0 0 0 .9 3.8 8.5 8.5 0 0 0 7.6 4.7 8.38 8.38 0 0 0 3.8-.9L21 21l-1.9-5.7a8.38 8.38 0 0 0 .9-3.8 8.5 8.5 0 0 0-4.7-7.6 8.38 8.38 0 0 0-3.8-.9h-.5a8.48 8.48 0 0 0-8 8v.5z"/></svg>
+        Falar com o suporte
+      </a>
+      <a class="btn btn--ghost" href="https://intraflex.redeflex.com.br/Chamados/NovoChamado" target="_blank" rel="noopener noreferrer">Abrir chamado</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" aria-label="Rodapé institucional">
+  <div class="wrap footer__grid">
+    <div>
+      <div class="footer__brand">Redeflex</div>
+      <ul style="margin-top:16px">
+        <li><a href="https://www.redeflex.com.br" target="_blank" rel="noopener noreferrer">Site institucional</a></li>
+        <li><a href="https://www.redeflex.com.br/contato" target="_blank" rel="noopener noreferrer">Fale conosco</a></li>
+        <li><a href="https://www.redeflex.com.br" target="_blank" rel="noopener noreferrer">Seja parceiro</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Produtos e serviços</h4>
+      <ul>
+        <li>Adquirência</li>
+        <li>Recarga e serviços</li>
+        <li>Soluções para varejo</li>
+        <li>Suporte técnico</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Atendimento</h4>
+      <ul>
+        <li><a href="https://wa.me/5508006470002?text=Ol%C3%A1%20preciso%20de%20uma%20ajuda" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        <li><a href="https://intraflex.redeflex.com.br/Chamados/NovoChamado" target="_blank" rel="noopener noreferrer">Abrir chamado</a></li>
+        <li><a href="mailto:opcom@redeflex.com.br">opcom@redeflex.com.br</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Institucional</h4>
+      <ul>
+        <li>Política de privacidade</li>
+        <li>Termos de uso</li>
+        <li>Segurança da informação</li>
+        <li>Ouvidoria</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__note">© Redeflex · Portal desenvolvido para orientar o atendimento com informações rápidas e oficiais.</div>
+</footer>
+
+<!-- ===================== SIMULADOR DO PORTAL (tutorial guiado) ===================== -->
+<div class="sim-overlay" id="simOverlay" hidden>
+  <div class="sim-modal" role="dialog" aria-modal="true" aria-labelledby="simTitle">
+    <div class="sim-modal__bar">
+      <div>
+        <span class="sim-modal__badge">Simulador · Portal do Cliente</span>
+        <h2 id="simTitle">Como o cliente consulta no Portal</h2>
+      </div>
+      <button class="sim-modal__close" id="simClose" aria-label="Fechar simulador">✕</button>
+    </div>
+
+    <div class="sim-body">
+      <!-- ===== PROTÓTIPO (recriação das telas) ===== -->
+      <div class="sim-app" id="simApp">
+        <!-- sidebar -->
+        <aside class="pa-side">
+          <div class="pa-brand"><span class="pa-brand__logo">redeFlex</span><small>Com você, onde você estiver</small></div>
+          <p class="pa-side__label">Menu principal</p>
+          <button class="pa-nav" data-screen="vendas" data-spot="nav-vendas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5"/></svg> Vendas</button>
+          <button class="pa-nav" data-screen="pagamentos" data-spot="nav-pag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Pagamentos <span class="pa-nav__chev">›</span></button>
+          <button class="pa-nav" data-screen="dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg> Antecipação <span class="pa-nav__chev">›</span></button>
+          <p class="pa-side__label">Termos</p>
+          <button class="pa-nav pa-nav--mut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg> Débito/Crédito</button>
+          <p class="pa-side__label">Outras páginas</p>
+          <button class="pa-nav pa-nav--mut">Fale Conosco</button>
+          <button class="pa-nav pa-nav--mut">Contrato de Adesão</button>
+          <button class="pa-nav pa-nav--mut">Sair</button>
+        </aside>
+
+        <!-- conteúdo -->
+        <div class="pa-main">
+          <div class="pa-top">
+            <button class="pa-sim-btn">Simular Venda</button>
+            <div class="pa-top__client">
+              <span class="pa-top__name">R5 COMERCIO E DISTRIBUICAO DE PRODUTOS DE LIMPEZA LTDA</span>
+              <span class="pa-top__id">656378</span>
+            </div>
+            <div class="pa-avatar"></div>
+          </div>
+
+          <!-- TELA: DASHBOARD -->
+          <div class="pa-screen is-active" data-screen="dashboard">
+            <div class="pa-grid2">
+              <div class="pa-card" data-spot="dash-receb">
+                <p class="pa-muted">Olá R5 COMERCIO E DISTRIBUICAO…</p>
+                <p class="pa-muted2">Recebimentos de hoje</p>
+                <p class="pa-big">R$ 113,42</p>
+              </div>
+              <div class="pa-card">
+                <p class="pa-h">Notificações</p>
+                <p class="pa-muted">Sem notificações no momento.</p>
+              </div>
+            </div>
+            <div class="pa-grid2">
+              <div class="pa-card">
+                <p class="pa-muted2">Saldo para recebimentos futuros</p>
+                <p class="pa-big">R$ 0,00</p>
+              </div>
+              <div class="pa-card" data-spot="dash-trans">
+                <p class="pa-h">Últimas Transações</p>
+                <div class="pa-trow"><span class="pa-flag pa-flag--elo">elo</span><span>Crédito<br><small>23/06 14:30</small></span><b class="pa-green">R$ 24,00</b></div>
+                <div class="pa-trow"><span class="pa-flag pa-flag--visa">VISA</span><span>Crédito<br><small>23/06 10:24</small></span><b class="pa-green">R$ 1,50</b></div>
+                <div class="pa-trow"><span class="pa-flag pa-flag--visa">VISA</span><span>Débito<br><small>23/06 08:56</small></span><b class="pa-green">R$ 38,00</b></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TELA: VENDAS -->
+          <div class="pa-screen" data-screen="vendas">
+            <div class="pa-card pa-filter" data-spot="vendas-filtro">
+              <div><p class="pa-muted2">Selecione a Data</p><div class="pa-input">22-06-2026</div></div>
+              <button class="pa-btn">Buscar</button>
+              <button class="pa-btn">Exportar</button>
+            </div>
+            <div class="pa-kpis" data-spot="vendas-kpis">
+              <div class="pa-kpi pa-kpi--green"><span>Total Vendido</span><b>R$ 116,22</b></div>
+              <div class="pa-kpi"><span>Vendas Capturadas</span><b>4</b></div>
+              <div class="pa-kpi"><span>Cancelado</span><b>0</b></div>
+              <div class="pa-kpi"><span>Ticket Médio</span><b>R$ 29,06</b></div>
+            </div>
+            <div class="pa-grid3" data-spot="vendas-modal">
+              <div class="pa-card pa-mini"><div class="pa-mini__h">PIX <b>R$ 0,00</b></div><p class="pa-muted">Nenhum registro</p></div>
+              <div class="pa-card pa-mini"><div class="pa-mini__h">DÉBITO <b>R$ 116,22</b></div>
+                <div class="pa-trow pa-trow--sm"><span class="pa-flag pa-flag--visa">VISA</span><span>Visa</span><b>R$ 25,77</b></div>
+                <div class="pa-trow pa-trow--sm"><span class="pa-flag pa-flag--elo">elo</span><span>Elo</span><b>R$ 90,45</b></div>
+              </div>
+              <div class="pa-card pa-mini"><div class="pa-mini__h">CRÉDITO <b>R$ 0,00</b></div><p class="pa-muted">Nenhum registro</p></div>
+            </div>
+          </div>
+
+          <!-- TELA: PAGAMENTOS -->
+          <div class="pa-screen" data-screen="pagamentos">
+            <div class="pa-card">
+              <div class="pa-legend"><span class="pa-dot pa-dot--g"></span>Efetivado <span class="pa-dot pa-dot--y"></span>A Receber <span class="pa-dot pa-dot--r"></span>Rejeitado</div>
+              <div class="pa-calhead"><b>junho de 2026</b><div class="pa-calnav"><span>Hoje</span><span>‹</span><span>›</span></div></div>
+              <div class="pa-cal" data-spot="pag-cal">
+                <div class="pa-cal__wd">seg</div><div class="pa-cal__wd">ter</div><div class="pa-cal__wd">qua</div><div class="pa-cal__wd">qui</div><div class="pa-cal__wd">sex</div>
+                <div class="pa-cal__d"><i>1</i><b class="pa-pill">R$ 433,83</b></div>
+                <div class="pa-cal__d"><i>2</i><b class="pa-pill">R$ 232,55</b></div>
+                <div class="pa-cal__d"><i>3</i><b class="pa-pill">R$ 967,37</b></div>
+                <div class="pa-cal__d"><i>4</i></div>
+                <div class="pa-cal__d"><i>5</i><b class="pa-pill">R$ 565,74</b></div>
+                <div class="pa-cal__d"><i>8</i><b class="pa-pill">R$ 278,65</b></div>
+                <div class="pa-cal__d"><i>9</i><b class="pa-pill">R$ 95,23</b></div>
+                <div class="pa-cal__d"><i>10</i><b class="pa-pill">R$ 110,43</b></div>
+                <div class="pa-cal__d"><i>11</i><b class="pa-pill">R$ 56,26</b></div>
+                <div class="pa-cal__d"><i>12</i><b class="pa-pill">R$ 549,25</b></div>
+                <div class="pa-cal__d"><i>22</i><b class="pa-pill">R$ 132,94</b></div>
+                <div class="pa-cal__d pa-cal__d--today"><i>23</i><b class="pa-pill">R$ 113,42</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- camada de destaque do tutorial -->
+        <div class="sim-spotlight" id="simSpotlight" hidden></div>
+      </div>
+
+      <!-- ===== TUTORIAL LATERAL ===== -->
+      <aside class="sim-guide">
+        <div class="sim-tabs" id="simTabs">
+          <button class="sim-tab is-active" data-screen="dashboard">Início</button>
+          <button class="sim-tab" data-screen="vendas">Vendas</button>
+          <button class="sim-tab" data-screen="pagamentos">Pagamentos</button>
+        </div>
+        <div class="sim-step">
+          <span class="sim-step__count" id="simStepCount">Passo 1</span>
+          <h3 id="simStepTitle">—</h3>
+          <p id="simStepText">—</p>
+        </div>
+        <div class="sim-guide__nav">
+          <button class="sim-prev" id="simPrev">‹ Anterior</button>
+          <div class="sim-dots" id="simDots"></div>
+          <button class="sim-next" id="simNext">Próximo ›</button>
+        </div>
+        <p class="sim-guide__note">Simulação ilustrativa para treinamento — valores fictícios.</p>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== POP-UP: FLUXO DE CREDENCIAMENTO DX8000 ===================== -->
+<div class="flow-overlay" id="flowOverlay" hidden>
+  <div class="flow-modal" role="dialog" aria-modal="true" aria-labelledby="flowTitle">
+    <button class="flow-modal__close" id="flowClose" aria-label="Fechar">✕</button>
+    <span class="flow-modal__badge">DX8000 · via Middleware</span>
+    <h2 id="flowTitle">Fluxo do Credenciamento</h2>
+    <p class="flow-modal__sub">Como a solicitação caminha do terminal até a confirmação “Credenciado com sucesso”.</p>
+
+    <div class="flow-stage">
+      <svg id="flowSvg" viewBox="0 0 920 300" role="img" aria-label="Diagrama do fluxo de credenciamento do DX8000">
+        <defs>
+          <marker id="flowArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10z" fill="var(--wine-500)"/>
+          </marker>
+          <linearGradient id="flowNodeGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7a1220"/><stop offset="1" stop-color="#4a0000"/>
+          </linearGradient>
+        </defs>
+
+        <!-- caminho de ida (POS -> middleware -> aloca -> tms7 -> solver) e volta (solver -> POS) -->
+        <path class="flow-path" id="flowPath"
+          d="M120 90 H300 M390 90 H560 M650 90 V150 M650 150 H270 M270 150 V210 M270 210 H650 M740 210 V150"
+          fill="none"/>
+
+        <!-- NÓ 1: POS -->
+        <g class="flow-node" data-step="1" transform="translate(40,55)">
+          <rect width="160" height="70" rx="14" fill="url(#flowNodeGrad)"/>
+          <text x="80" y="30" class="flow-node__t">POS</text>
+          <text x="80" y="50" class="flow-node__s">Credenciamento</text>
+        </g>
+        <!-- NÓ 2: Middleware -->
+        <g class="flow-node" data-step="2" transform="translate(310,55)">
+          <rect width="170" height="70" rx="14" fill="url(#flowNodeGrad)"/>
+          <text x="85" y="30" class="flow-node__t">Middleware</text>
+          <text x="85" y="50" class="flow-node__s">ID disponível</text>
+        </g>
+        <!-- NÓ 3: Alocação -->
+        <g class="flow-node" data-step="3" transform="translate(565,115)">
+          <rect width="170" height="70" rx="14" fill="url(#flowNodeGrad)"/>
+          <text x="85" y="30" class="flow-node__t">Alocação</text>
+          <text x="85" y="50" class="flow-node__s">Realiza alocação</text>
+        </g>
+        <!-- NÓ 4: TMS7 -->
+        <g class="flow-node" data-step="4" transform="translate(185,175)">
+          <rect width="170" height="70" rx="14" fill="url(#flowNodeGrad)"/>
+          <text x="85" y="30" class="flow-node__t">TMS7</text>
+          <text x="85" y="50" class="flow-node__s">Recebe a alocação</text>
+        </g>
+        <!-- NÓ 5: Gestão Solver -->
+        <g class="flow-node" data-step="5" transform="translate(565,175)">
+          <rect width="180" height="70" rx="14" fill="url(#flowNodeGrad)"/>
+          <text x="90" y="28" class="flow-node__t">Gestão Solver</text>
+          <text x="90" y="48" class="flow-node__s">Aloca o terminal</text>
+        </g>
+
+        <!-- pacote que viaja -->
+        <circle id="flowDot" class="flow-dot" r="9" fill="var(--accent)"/>
+
+        <!-- selo de sucesso -->
+        <g id="flowSuccess" class="flow-success" transform="translate(40,150)">
+          <rect width="170" height="64" rx="14" fill="#0c7a52"/>
+          <text x="85" y="27" class="flow-node__t">✓ Credenciado</text>
+          <text x="85" y="47" class="flow-node__s">com sucesso</text>
+        </g>
+      </svg>
+    </div>
+
+    <ol class="flow-steps" id="flowSteps">
+      <li data-step="1"><b>POS</b> — inicia o credenciamento do terminal.</li>
+      <li data-step="2"><b>Middleware</b> — confirma que o ID está disponível.</li>
+      <li data-step="3"><b>Alocação</b> — o middleware realiza a alocação do terminal.</li>
+      <li data-step="4"><b>TMS7</b> — recebe a informação da alocação.</li>
+      <li data-step="5"><b>Gestão Solver</b> — aloca o terminal e devolve o retorno.</li>
+      <li data-step="6"><b>POS</b> — recebe a mensagem “Credenciado com sucesso”.</li>
+    </ol>
+
+    <div class="flow-modal__foot">
+      <button class="btn-flow-replay" id="flowReplay">↻ Rever animação</button>
+      <a class="btn-flow-doc" href="https://drive.google.com/file/d/1Bn45ePzN7ULbsv--2cTPIR1fpNFc01n_/view" target="_blank" rel="noopener noreferrer">Abrir manual completo</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ASSISTENTE ===================== -->
+<button class="chat-toggle" id="chatToggle" aria-label="Abrir assistente da central">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+
+<aside class="chat" id="chat" role="dialog" aria-modal="false" aria-label="Assistente da central">
+  <div class="chat__head">
+    <div><h2>Agente OPCOM</h2><small>Responde com base no manual + FAQ</small></div>
+    <button class="chat__close" id="chatClose" aria-label="Fechar assistente">✕</button>
+  </div>
+  <div class="chat__msgs" id="chatMsgs"></div>
+  <div class="chat__chips" id="chatChips"></div>
+  <form class="chat__form" id="chatForm">
+    <input id="chatInput" type="text" placeholder="Digite sua dúvida…" aria-label="Digite sua dúvida" autocomplete="off">
+    <button type="submit">Enviar</button>
+  </form>
+</aside>
+
+<script src="script.js" defer></script>
 </body>
 </html>
